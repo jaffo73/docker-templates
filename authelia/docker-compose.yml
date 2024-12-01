@@ -19,7 +19,7 @@ services:
       DEFAULT_REDIRECTION_URL: https://${DEPLOY_SUBDOMAIN:-authelia}.${DEPLOY_HOSTNAME}
       DOMAIN_TO_PROTECT: ${DEPLOY_HOSTNAME}
     networks:
-      - external_network
+      - ingress
     configs:
       - source: authelia-configuration
         target: /config/configuration.yml
@@ -62,7 +62,7 @@ services:
 #:test|        - "traefik.http.routers.test-authelia.middlewares=authelia@docker"
 
 networks:
-  external_network:
+  ingress:
     external: true
 
 configs:
